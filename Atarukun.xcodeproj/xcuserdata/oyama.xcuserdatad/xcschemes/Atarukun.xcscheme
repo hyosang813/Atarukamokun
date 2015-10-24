@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0BBE0C081946BF9100BAA038"
-               BuildableName = "Atarukun.app"
+               BuildableName = "&#24403;&#12383;&#12427;&#40232;&#21531;.app"
                BlueprintName = "Atarukun"
                ReferencedContainer = "container:Atarukun.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0BBE0C081946BF9100BAA038"
-            BuildableName = "Atarukun.app"
+            BuildableName = "&#24403;&#12383;&#12427;&#40232;&#21531;.app"
             BlueprintName = "Atarukun"
             ReferencedContainer = "container:Atarukun.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0BBE0C081946BF9100BAA038"
-            BuildableName = "Atarukun.app"
+            BuildableName = "&#24403;&#12383;&#12427;&#40232;&#21531;.app"
             BlueprintName = "Atarukun"
             ReferencedContainer = "container:Atarukun.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0BBE0C081946BF9100BAA038"
-            BuildableName = "Atarukun.app"
+            BuildableName = "&#24403;&#12383;&#12427;&#40232;&#21531;.app"
             BlueprintName = "Atarukun"
             ReferencedContainer = "container:Atarukun.xcodeproj">
          </BuildableReference>
