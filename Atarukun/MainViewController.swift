@@ -419,7 +419,7 @@ class MainViewController: UIViewController, SetViewDelegate {
                 if i < setArray.count {
                     endArray.append(String(setArray[i]))
                 } else {
-                    endArray.append(String(Int(arc4random()) % range + 1))
+                    endArray.append(String(format:"%02d", Int(arc4random()) % range + 1))
                 }
                 
                 //乱数が重複したら再抽選
@@ -522,8 +522,10 @@ class MainViewController: UIViewController, SetViewDelegate {
             label.hidden = false
         }
         
-        //ここで次に備えてstartArrayを初期化しとかなあかん
+        //ここで次に備えてArrayを初期化しとかなあかん
         startArray.removeAll()
+        tempStartArray.removeAll()
+        endArray.removeAll()
         
         //ボタンカウントを初期化
         buttonCount = 0
@@ -722,6 +724,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     //順次表示用ラベル表示メソッド
     func displayLabelOrder(frameCount: Int)
     {
+        var localFrameCount = frameCount
         var displayNum: [Int] = []
         if buttonKind == LOTOPART.MINI.rawValue {
             displayNum = [0, 1, 2, 3, 6]
@@ -734,7 +737,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         var j = 0
         for var i = 0; i < 7; i++ {
             if  displayNum.contains(i) { //本当にこのcontainsの使い方で存在チェックできるの？？？？？
-                if frameCount <= i {
+                if localFrameCount >= i {
                     labelArray[i].text = endArray[j]
                 } else {
                     labelArray[i].text = startArray[j]
@@ -742,6 +745,7 @@ class MainViewController: UIViewController, SetViewDelegate {
                 j++
             } else {
                 labelArray[i].text = ""
+                localFrameCount++
             }
         }
     }
