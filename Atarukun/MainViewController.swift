@@ -117,7 +117,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     var orderTim: NSTimer?
     var orderCount = 0
     
-    //設定画面インスタンス　　ｓｗｉｆｔファイルが現時点では無い？？？？？
+    //設定画面インスタンス
     var svc: SetViewController?
     
     
@@ -182,7 +182,6 @@ class MainViewController: UIViewController, SetViewDelegate {
         labelArray = [labelFirst, labelSecond, labelThird, labelFourth, labelFifth, labelSixeth, labelSeventh]
         
         //設定画面遷移用ボタン配置
-        //addtargetのactionに：は必要か？？？？？
         setButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 65, 30, 50, 50))
         setButton.setBackgroundImage(UIImage(named: "haguruma.png"), forState: .Normal)
         setButton.addTarget(self, action: "transSetMode", forControlEvents: .TouchUpInside)
@@ -363,13 +362,9 @@ class MainViewController: UIViewController, SetViewDelegate {
         //ナンバーズ系共通処理 ナンバーズは高速回転の最後の値を使用
         if buttonKind == LOTOPART.NUM3.rawValue || buttonKind == LOTOPART.NUM4.rawValue {
         
-            //ラベルに乱数を表示させつつ対象の設定情報Arrayをセット
-            if buttonKind == LOTOPART.NUM3.rawValue {
-                displayLabel([0, 1, 2])
-                setArray = setArrayParent[0]
-            } else {
-                displayLabel([0, 1, 2, 3])
-                setArray = setArrayParent[1]
+            //serArrayParent情報なし(設定画面開いてない)だったらsetArray系処理はスキップ
+            if setArrayParent.count != 0 {
+                setArray = setArrayParent[buttonKind - 101]
             }
             
             //設定画面で指定された数字があれば(99じゃなかったら)置き換える
@@ -380,6 +375,10 @@ class MainViewController: UIViewController, SetViewDelegate {
                     label.text = String(setArray[i])
                 }
             }
+            
+            //ラベルに乱数を表示させつつ対象の設定情報Arrayをセット
+            let tempDispArray =  buttonKind == LOTOPART.NUM3.rawValue ? [0, 1, 2] : [0, 1, 2, 3]
+            displayLabel(tempDispArray)
             
             //ラベルを点滅させるタイマースタート
             blinkTm = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "labelTextBlink", userInfo: nil, repeats: true)
@@ -398,19 +397,21 @@ class MainViewController: UIViewController, SetViewDelegate {
                 case LOTOPART.MINI.rawValue:
                     range = 31
                     kind = 5
-                    setArray = setArrayParent[2]
                 
                 case LOTOPART.LOTO6.rawValue:
                     range = 43
                     kind = 6
-                    setArray = setArrayParent[3]
                 
                 case LOTOPART.LOTO6.rawValue:
                     range = 37
                     kind = 7
-                    setArray = setArrayParent[4]
                 
                 default: break
+            }
+            
+            //serArrayParent情報なし(設定画面開いてない)だったらsetArray系処理はスキップ
+            if setArrayParent.count != 0 {
+                setArray = setArrayParent[buttonKind - 101]
             }
             
             //設定画面に任意数字をセットされてたら任意数字を、じゃなかったら乱数をセット
@@ -521,6 +522,9 @@ class MainViewController: UIViewController, SetViewDelegate {
             label.hidden = false
         }
         
+        //ここで次に備えてstartArrayを初期化しとかなあかん
+        startArray.removeAll()
+        
         //ボタンカウントを初期化
         buttonCount = 0
     }
@@ -611,6 +615,9 @@ class MainViewController: UIViewController, SetViewDelegate {
         
         //左右アニメーション中は以下の処理はスキップ
         if animationCount <= 30 { return }
+        
+        //この時点で次に備えてtempStartArrayを初期化
+        tempStartArray.removeAll()
         
         //左右アニメーション終了したらカウンター初期化
         animationCount = 0
@@ -774,7 +781,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         //svcインスタンスが存在しない場合は生成（シングルトン！！）
         if svc == nil {
             svc = SetViewController()
-            //値私にデリゲート必要？？？？？
+            svc?.delegate = self
         }
         
         //遷移
