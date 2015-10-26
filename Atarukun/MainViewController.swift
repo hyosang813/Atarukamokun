@@ -402,7 +402,7 @@ class MainViewController: UIViewController, SetViewDelegate {
                     range = 43
                     kind = 6
                 
-                case LOTOPART.LOTO6.rawValue:
+                case LOTOPART.LOTO7.rawValue:
                     range = 37
                     kind = 7
                 
