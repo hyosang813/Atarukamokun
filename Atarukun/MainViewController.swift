@@ -91,9 +91,6 @@ class MainViewController: UIViewController, SetViewDelegate {
     //アニメーション中か否かの判定
     var animeSwitch = false
     
-    //設定情報くじ種類（こっちのenumとリンク）
-    var choiceSeg: Int?
-    
     //左右アニメーションカウンター
     var animationCount = 0
     
@@ -128,19 +125,22 @@ class MainViewController: UIViewController, SetViewDelegate {
         //画面背景色は黄色
         self.view.backgroundColor = UIColor.yellowColor()
         
-        //iosVerによる切り分け処理
-        myWidth = Float(self.view.bounds.size.width)
-        myHeight = Float(self.view.bounds.size.height)
+//        //iosVerによる切り分け処理
+//        myWidth = Float(self.view.bounds.size.width)
+//        myHeight = Float(self.view.bounds.size.height)
+//        
+//        //ios7以下だったら縦横入れ替え CGFloatをFloatにキャストしてるけど本当にこんなんでself.viewのプロパティ値がかわんのか？？？？？
+//        //てかios7はもう動作対象から外すか？？？？？
+//        if Float(UIDevice.currentDevice().systemVersion) < 8.0 {
+//            let tmpWidth = myWidth
+//            myWidth = myHeight
+//            myHeight = tmpWidth
+//            self.view.bounds.size.width = CGFloat(myWidth!)
+//            self.view.bounds.size.height = CGFloat(myHeight!)
+//        }
         
-        //ios7以下だったら縦横入れ替え CGFloatをFloatにキャストしてるけど本当にこんなんでself.viewのプロパティ値がかわんのか？？？？？
-        //てかios7はもう動作対象から外すか？？？？？
-        if Float(UIDevice.currentDevice().systemVersion) < 8.0 {
-            let tmpWidth = myWidth
-            myWidth = myHeight
-            myHeight = tmpWidth
-            self.view.bounds.size.width = CGFloat(myWidth!)
-            self.view.bounds.size.height = CGFloat(myHeight!)
-        }
+        print(self.view.bounds.size.width)
+        print(self.view.bounds.size.height)
         
         //題名ラベルの生成「あたるクン」 ※ちっちゃーく「かも」を入れる
         makeLabelTitle("あ", frame: CGRectMake(self.view.bounds.size.width / 2 - 135, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor.redColor(), slope: -0.5)
@@ -369,11 +369,9 @@ class MainViewController: UIViewController, SetViewDelegate {
             }
             
             //設定画面で指定された数字があれば(99じゃなかったら)置き換える
-            let labelArray = [labelFirst, labelSecond, labelThird, labelFourth]
             for var i = 0; i < setArray.count; i++ {
-                if Int(setArray[i]) != 99 {
-                    let label = labelArray[i]
-                    label.text = String(setArray[i])
+                if setArray[i] != 99 {
+                    startArray[i] = String(setArray[i])
                 }
             }
             
@@ -418,7 +416,7 @@ class MainViewController: UIViewController, SetViewDelegate {
             //設定画面に任意数字をセットされてたら任意数字を、じゃなかったら乱数をセット
             for var i = 0; i < kind; i++ {
                 if i < setArray.count {
-                    endArray.append(String(setArray[i]))
+                    endArray.append(String(format:"%02d", setArray[i]))
                 } else {
                     endArray.append(String(format:"%02d", Int(arc4random()) % range + 1))
                 }
@@ -804,37 +802,37 @@ class MainViewController: UIViewController, SetViewDelegate {
         setArrayParent = returnValue
         
         for var i = 0; i < setArrayParent.count; i++ {
-            var kujiKind = setArrayParent[i]
+//            var kujiKind = setArrayParent[i]
             
             //ナンバーズ系の場合はANY(0)を「99」に変換し、それ以外は「-1」して再セット
             if i < 2 {
-                for var i = 0; i < kujiKind.count; i++ {
-                    kujiKind[i] = kujiKind[i] == 0 ? 99 : --kujiKind[i]
+                for var j = 0; j < setArrayParent[i].count; j++ {
+                    setArrayParent[i][j] = setArrayParent[i][j] == 0 ? 99 : --setArrayParent[i][j]
                 }
             } else {
                 //ロト系の場合は場合はまずANY(0)を削除して重複削除してソート
                 //ANY(0)削除　※単純なカウントアップのfor文だと削除のたびにMutableArrayの要素数が減っていくので不整合が起きる。したがって要素の後ろから順番に削除していく必要がある。
-                for var i = kujiKind.count - 1; i >= 0; i-- {
-                    if kujiKind[i] == 0 {
-                        kujiKind.removeAtIndex(i)
+                for var j = setArrayParent[i].count - 1; j >= 0; j-- {
+                    if setArrayParent[i][j] == 0 {
+                        setArrayParent[i].removeAtIndex(j)
                     }
                 }
                 
                 //重複排除
-                for var i = 0; i < kujiKind.count; i++ {
+                for var k = 0; k < setArrayParent[i].count; k++ {
                     var index = 0
-                    for tempValue in kujiKind {
+                    for tempValue in setArrayParent[i] {
                         //配列の中身を比較し、同一かつ現在の数値ではない場合削除する
-                        if tempValue == kujiKind[i] && index != i {
-                            kujiKind.removeAtIndex(i)
-                            i--
+                        if tempValue == setArrayParent[i][k] && index != k {
+                            setArrayParent[i].removeAtIndex(k)
+                            k--
                             break
                         }
-                        index++
+                    index++
                     }
                 }
                 //ソート
-                kujiKind = kujiKind.sort { $0 < $1 }
+                setArrayParent[i] = setArrayParent[i].sort { $0 < $1 }
             }
         }
     }

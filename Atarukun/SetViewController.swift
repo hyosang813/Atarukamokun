@@ -205,25 +205,18 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //pickerviewの選択値を格納
     func savePickValue() -> Bool
     {
-        //作った直後に全削除してんだけど、いらなくね？？？？？
-//        //直前のピッカービューがどのくじ種類を表示してたかを判定
-//        NSMutableArray *target = kujiKindArray[choiceSeg - 101];
-//        
-//        //targetを一度空にして、再度ピッカービューで選択されてる値(ピッカービューのrowナンバー)をセットする
-//        [target removeAllObjects];
-        
-        var targetArray: [Int] = []
+        kujiKindArray[choiceSeg - 101].removeAll()
         
         var alertCount = 0
         for var i = 0; i < returnDrums; i++ {
-            targetArray.append(pickerView.selectedRowInComponent(i))
-            if targetArray[i] != 0 {
+            kujiKindArray[choiceSeg - 101].append(pickerView.selectedRowInComponent(i))
+            if kujiKindArray[choiceSeg - 101][i] != 0 {
                 alertCount++
             }
         }
         
         //全部がANY(0)以外だったらYESを返してshowAleartしてスキップ
-        return alertCount == targetArray.count ? true : false
+        return alertCount == kujiKindArray[choiceSeg - 101].count ? true : false
     }
     
     //pickerViewに記憶されていた値をロード
@@ -253,10 +246,7 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         //直前のPickerViewの値をArrayに格納
         choiceSeg = seg.selectedSegmentIndex + 101
         pickerView.reloadAllComponents()
-        
         loadPickValue()
-        pickerView.reloadAllComponents()
-        //ここで２回もリロードする必要ある？？？？？
     }
     
     //Resetボタンクリック時コール
