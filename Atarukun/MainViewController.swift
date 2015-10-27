@@ -143,12 +143,12 @@ class MainViewController: UIViewController, SetViewDelegate {
         }
         
         //題名ラベルの生成「あたるクン」 ※ちっちゃーく「かも」を入れる
-        makeLabelTitle("あ", rect: CGRectMake(self.view.bounds.size.width / 2 - 135, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor.redColor(), slope: -0.5)
-        makeLabelTitle("た", rect: CGRectMake(self.view.bounds.size.width / 2 - 65, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.747, blue: 0, alpha: 1), slope: 0.5)
-        makeLabelTitle("る", rect: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.412, blue: 0.706, alpha: 1), slope: -0.5)
-        makeLabelTitle("ク", rect: CGRectMake(self.view.bounds.size.width / 2 + 75, self.view.bounds.size.height / 2 - 100, 30, 30), fontSize: 36.0, fontColor: UIColor.greenColor(), slope: 0.2)
-        makeLabelTitle("ン", rect: CGRectMake(self.view.bounds.size.width / 2 + 100, self.view.bounds.size.height / 2 - 75, 30, 30), fontSize: 36.0, fontColor: UIColor.purpleColor(), slope: 0.2)
-        makeLabelTitle("かも", rect: CGRectMake(self.view.bounds.size.width / 2 + 65, self.view.bounds.size.height / 2 - 50, 20, 10), fontSize: 8.0, fontColor: UIColor.redColor(), slope: 0)
+        makeLabelTitle("あ", frame: CGRectMake(self.view.bounds.size.width / 2 - 135, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor.redColor(), slope: -0.5)
+        makeLabelTitle("た", frame: CGRectMake(self.view.bounds.size.width / 2 - 65, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.747, blue: 0, alpha: 1), slope: 0.5)
+        makeLabelTitle("る", frame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.412, blue: 0.706, alpha: 1), slope: -0.5)
+        makeLabelTitle("ク", frame: CGRectMake(self.view.bounds.size.width / 2 + 75, self.view.bounds.size.height / 2 - 100, 30, 30), fontSize: 36.0, fontColor: UIColor.greenColor(), slope: 0.2)
+        makeLabelTitle("ン", frame: CGRectMake(self.view.bounds.size.width / 2 + 100, self.view.bounds.size.height / 2 - 75, 30, 30), fontSize: 36.0, fontColor: UIColor.purpleColor(), slope: 0.2)
+        makeLabelTitle("かも", frame: CGRectMake(self.view.bounds.size.width / 2 + 65, self.view.bounds.size.height / 2 - 50, 20, 10), fontSize: 8.0, fontColor: UIColor.redColor(), slope: 0)
         
         //結果表示用のラベル土台VIEW配置
         resultView.frame = CGRectMake(self.view.bounds.size.width / 2 - 160, self.view.bounds.size.height / 2 - 20, 323, 48)
@@ -215,7 +215,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     //MARK: - 他メソッドセクション
     
     //題名ラベル生成メソッド
-    func makeLabelTitle(title: String, rect: CGRect, fontSize: CGFloat, fontColor: UIColor, slope: Double)
+    func makeLabelTitle(title: String, frame: CGRect, fontSize: CGFloat, fontColor: UIColor, slope: Double)
     {
         //文字装飾オブジェクト生成
         let attrStr = NSMutableAttributedString(string: title)
@@ -238,6 +238,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         
         //ラベル生成
         let label = UILabel()
+        label.frame = frame
         label.attributedText = attrStr
         label.sizeToFit()
         
