@@ -62,7 +62,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     //SNSクライアント表示ボタン
     var twitterButton = UIButton()
     var facebookButton = UIButton()
-    var lineButton = UIButton() //定義だけでボタン生成はしてないです？？？？？
+    var lineButton = UIButton()
     
     //設定画面遷移用ボタン
     var setButton = UIButton()
@@ -125,23 +125,6 @@ class MainViewController: UIViewController, SetViewDelegate {
         //画面背景色は黄色
         self.view.backgroundColor = UIColor.yellowColor()
         
-//        //iosVerによる切り分け処理
-//        myWidth = Float(self.view.bounds.size.width)
-//        myHeight = Float(self.view.bounds.size.height)
-//        
-//        //ios7以下だったら縦横入れ替え CGFloatをFloatにキャストしてるけど本当にこんなんでself.viewのプロパティ値がかわんのか？？？？？
-//        //てかios7はもう動作対象から外すか？？？？？
-//        if Float(UIDevice.currentDevice().systemVersion) < 8.0 {
-//            let tmpWidth = myWidth
-//            myWidth = myHeight
-//            myHeight = tmpWidth
-//            self.view.bounds.size.width = CGFloat(myWidth!)
-//            self.view.bounds.size.height = CGFloat(myHeight!)
-//        }
-        
-        print(self.view.bounds.size.width)
-        print(self.view.bounds.size.height)
-        
         //題名ラベルの生成「あたるクン」 ※ちっちゃーく「かも」を入れる
         makeLabelTitle("あ", frame: CGRectMake(self.view.bounds.size.width / 2 - 135, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor.redColor(), slope: -0.5)
         makeLabelTitle("た", frame: CGRectMake(self.view.bounds.size.width / 2 - 65, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.747, blue: 0, alpha: 1), slope: 0.5)
@@ -189,7 +172,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         self.view.addSubview(setButton)
         
         //twitter連携ボタン配置
-        twitterButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 50, 100, 30, 30))
+        twitterButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 55, 90, 30, 30))
         twitterButton.setBackgroundImage(UIImage(named: "twitter.png"), forState: .Normal)
         twitterButton.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
         twitterButton.tag = SNSPART.TWITTER.rawValue
@@ -197,12 +180,20 @@ class MainViewController: UIViewController, SetViewDelegate {
         self.view.addSubview(twitterButton)
         
         //facebook連携ボタン配置
-        facebookButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 50, 150, 30, 30))
+        facebookButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 55, 130, 30, 30))
         facebookButton.setBackgroundImage(UIImage(named: "facebook.png"), forState: .Normal)
         facebookButton.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
         facebookButton.tag = SNSPART.FACEBOOK.rawValue
         facebookButton.enabled = false
         self.view.addSubview(facebookButton)
+        
+        //line連携ボタン配置
+        lineButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 55, 170, 30, 30))
+        lineButton.setBackgroundImage(UIImage(named: "line.png"), forState: .Normal)
+        lineButton.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
+        lineButton.tag = SNSPART.LINE.rawValue
+        lineButton.enabled = false
+        self.view.addSubview(lineButton)
         
         //ランダム数値生成ボタン配置(５個）
         num3Button = makeButton(LOTOPART.NUM3.rawValue, shiten:self.view.bounds.size.width / 2 - 200, image: "numbers3.jpg")
@@ -315,6 +306,7 @@ class MainViewController: UIViewController, SetViewDelegate {
                 setButton.enabled = false
                 twitterButton.enabled = false
                 facebookButton.enabled = false
+                lineButton.enabled = false
                 drawLabelFrame()
                 firstPress(button.tag)
             
@@ -322,9 +314,10 @@ class MainViewController: UIViewController, SetViewDelegate {
                 blinkAnime()
             
             case 2: //ボタンカウント2の時はラベルの点滅終了　※選択不可状態の設定ボタンを活性化
-                setButton.enabled = true;
-                twitterButton.enabled = true;
-                facebookButton.enabled = true;
+                setButton.enabled = true
+                twitterButton.enabled = true
+                facebookButton.enabled = true
+                lineButton.enabled = true
                 blinkStop()
             
             default: break
@@ -418,7 +411,7 @@ class MainViewController: UIViewController, SetViewDelegate {
                 if i < setArray.count {
                     endArray.append(String(format:"%02d", setArray[i]))
                 } else {
-                    endArray.append(String(format:"%02d", Int(arc4random()) % range + 1))
+                    endArray.append(String(format:"%02d", (arc4random() % UInt32(range)) + 1))
                 }
                 
                 //乱数が重複したら再抽選
@@ -452,7 +445,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         
         //また適当乱数生成
         for var i = 0; i < 7; i++ {
-            startArray.append(String(format:"%02d", arc4random() % 99))
+            startArray.append(String(format:"%02d", arc4random() % UInt32(99)))
         }
         
         //カウンタの数値で表示を切り分け　※１段階５フレーム
@@ -547,7 +540,7 @@ class MainViewController: UIViewController, SetViewDelegate {
             //左右アニメーションよう数値文字列生成
             for var i = 0; i < 7; i++ {
                 //[01]〜[99]の乱数生成
-                startArray.append(String(format:"%02d", arc4random() % 99 + 1))
+                startArray.append(String(format:"%02d", (arc4random() % UInt32(99)) + 1))
                 
                 //なめらか表現用のArray生成 //最初の要素は２桁目だけで、あとは左側の１桁目と右側の２桁目をガッチャンコ
                 if i == 0 {
@@ -661,7 +654,7 @@ class MainViewController: UIViewController, SetViewDelegate {
             case LOTOPART.NUM3.rawValue, LOTOPART.NUM4.rawValue:
                 //ナンバーズ系は４つの一桁乱数を毎回生成
                 for var i = 0; i < 4; i++ {
-                    startArray.append(String(arc4random() % 9))
+                    startArray.append(String(arc4random() % UInt32(9)))
                 }
             
                 //それぞれ表示
@@ -674,7 +667,7 @@ class MainViewController: UIViewController, SetViewDelegate {
             default:
                 //ロト系は７つの二桁乱数を毎回生成
                 for var i = 0; i < 7; i++ {
-                    startArray.append(String(format:"%02d", arc4random() % 99))
+                    startArray.append(String(format:"%02d", arc4random() % UInt32(99)))
                 }
                 
                 //それぞれ表示
@@ -711,7 +704,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     {
         var j = 0
         for var i = 0; i < 7; i++ {
-            if  displayNum.contains(i) { //本当にこのcontainsの使い方で存在チェックできるの？？？？？
+            if  displayNum.contains(i) { //存在チェック
                 labelArray[i].text = startArray[j]
                 j++
             } else {
@@ -735,7 +728,7 @@ class MainViewController: UIViewController, SetViewDelegate {
 
         var j = 0
         for var i = 0; i < 7; i++ {
-            if  displayNum.contains(i) { //本当にこのcontainsの使い方で存在チェックできるの？？？？？
+            if  displayNum.contains(i) { //存在チェック
                 if localFrameCount >= i {
                     labelArray[i].text = endArray[j]
                 } else {
@@ -762,7 +755,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         }
         
         for var i = 0; i < 7; i++ {
-            if  displayNum.contains(i) { //本当にこのcontainsの使い方で存在チェックできるの？？？？？
+            if  displayNum.contains(i) { //存在チェック
                 labelArray[i].text = endArray[i]
             } else {
                 labelArray[i].text = ""
@@ -794,7 +787,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     }
     
     
-    //設定画面から値を受け渡される方法を調査してから実装？？？？？
+    //設定画面から値を受け取る
     func finishSetting(returnValue: [[Int]])
     {
         //こっちのインスタンス変数にセット
@@ -802,7 +795,6 @@ class MainViewController: UIViewController, SetViewDelegate {
         setArrayParent = returnValue
         
         for var i = 0; i < setArrayParent.count; i++ {
-//            var kujiKind = setArrayParent[i]
             
             //ナンバーズ系の場合はANY(0)を「99」に変換し、それ以外は「-1」して再セット
             if i < 2 {
@@ -841,9 +833,8 @@ class MainViewController: UIViewController, SetViewDelegate {
     //ソーシャルボタン押下時の挙動
     func socialButton(button: UIButton)
     {
-        //画面キャプチャの取得と90度回転
-        var captureImage = MainViewController.getScreenShotImage()
-        captureImage = UIImage(CGImage: captureImage.CGImage!, scale: captureImage.scale, orientation: UIImageOrientation.Right)
+        //画面キャプチャの取得
+        let captureImage = MainViewController.getScreenShotImage()
         
         //Twitter
         if button.tag == SNSPART.TWITTER.rawValue {
@@ -875,15 +866,16 @@ class MainViewController: UIViewController, SetViewDelegate {
             
         //LINE
         } else {
-            //LINEは最初に文字列生成
-            let lineMessage = NSURL(string: "line://msg/text" + makeSnsPostStr())
-            
             //インストールチェック
-            if !UIApplication.sharedApplication().canOpenURL(lineMessage!) {
+            if !UIApplication.sharedApplication().canOpenURL(NSURL(string: "line://")!) {
                 displayAlertMessage("LINE")
                 return
             }
             
+            //LINEは最初に文字列生成
+            let message = "line://msg/text/" + makeSnsPostStr()
+            let lineMessage = NSURL(string: message.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)
+
             //LINE連携　文字と画像は一緒にでけへん
             UIApplication.sharedApplication().openURL(lineMessage!)
         }
@@ -910,7 +902,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         kujiNum = kujiNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         //最終的に表示する文字列に整形して返す
-        return "\(kujiKind)「\(kujiNum)」（買うとは言ってない）#当たる鴨君"
+        return "\(kujiKind)「\(kujiNum)」（買うとは言ってない）\n#当たる鴨君"
     }
     
     //画面キャプチャクラスメソッド
@@ -937,18 +929,11 @@ class MainViewController: UIViewController, SetViewDelegate {
     {
         //メッセージを作成
         let localMessage = "iPhoneの設定画面で\(message)アカウントを設定してください"
-        
-        if #available(iOS 8.0, *) {
-            //iOS8以上用のアラート表示処理を書く (UIAlertControllerを使用)
-            let alert = UIAlertController(title: "", message: localMessage, preferredStyle: .Alert)
-            let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) -> Void in}
-            alert.addAction(cancelAction)
-            presentViewController(alert, animated: true, completion: nil)
-        } else {
-            //iOS7用のアラート表示処理を書く (UIAlertViewを使用)
-            let alert = UIAlertView(title: "", message: localMessage, delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-        }
+        let alert = UIAlertController(title: "", message: localMessage, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) -> Void in}
+        alert.addAction(cancelAction)
+        presentViewController(alert, animated: true, completion: nil)
+
     }
 
     //メモリワーニング

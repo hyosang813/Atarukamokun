@@ -280,17 +280,10 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //アラートメッセージ共通メソッド
     func displayAlertMessage(message: String)
     {
-        if #available(iOS 8.0, *) {
-            //iOS8以上用のアラート表示処理を書く (UIAlertControllerを使用)
-            let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
-            let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) -> Void in}
-            alert.addAction(cancelAction)
-            presentViewController(alert, animated: true, completion: nil)
-        } else {
-            //iOS7用のアラート表示処理を書く (UIAlertViewを使用)
-            let alert = UIAlertView(title: "", message: message, delegate: self, cancelButtonTitle: "OK")
-            alert.show()
-        }
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) -> Void in}
+        alert.addAction(cancelAction)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     //メモリワーニング
