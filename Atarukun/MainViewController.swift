@@ -109,6 +109,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     
     //結果表示ラベルをまとめたArray
     var labelArray: [UILabel] = []
+    var labelArrayWaku: [UILabel] = []
     
     //ロト系の順次表示用タイマーとカウンタ
     var orderTim: NSTimer?
@@ -127,13 +128,13 @@ class MainViewController: UIViewController, SetViewDelegate {
         //画面背景色は黄色
         self.view.backgroundColor = UIColor.yellowColor()
         
-        //題名ラベルの生成「あたるクン」 ※ちっちゃーく「かも」を入れる
-        makeLabelTitle("あ", frame: CGRectMake(self.view.bounds.size.width / 2 - 135, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor.redColor(), slope: -0.5)
-        makeLabelTitle("た", frame: CGRectMake(self.view.bounds.size.width / 2 - 65, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.747, blue: 0, alpha: 1), slope: 0.5)
-        makeLabelTitle("る", frame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.412, blue: 0.706, alpha: 1), slope: -0.5)
-        makeLabelTitle("ク", frame: CGRectMake(self.view.bounds.size.width / 2 + 75, self.view.bounds.size.height / 2 - 100, 30, 30), fontSize: 36.0, fontColor: UIColor.greenColor(), slope: 0.2)
-        makeLabelTitle("ン", frame: CGRectMake(self.view.bounds.size.width / 2 + 100, self.view.bounds.size.height / 2 - 75, 30, 30), fontSize: 36.0, fontColor: UIColor.purpleColor(), slope: 0.2)
-        makeLabelTitle("かも", frame: CGRectMake(self.view.bounds.size.width / 2 + 65, self.view.bounds.size.height / 2 - 50, 20, 10), fontSize: 8.0, fontColor: UIColor.redColor(), slope: 0)
+        //題名ラベルの生成「あたるクン」 ※ちっちゃーく「かも」を入れる 生成と同時にaddsubviewした
+        self.view .addSubview(makeLabelTitle("あ", frame: CGRectMake(self.view.bounds.size.width / 2 - 135, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor.redColor(), slope: -0.5))
+        self.view .addSubview(makeLabelTitle("た", frame: CGRectMake(self.view.bounds.size.width / 2 - 65, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.747, blue: 0, alpha: 1), slope: 0.5))
+        self.view .addSubview(makeLabelTitle("る", frame: CGRectMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2 - 100, 220, 50), fontSize: 60.0, fontColor: UIColor(red: 1.0, green: 0.412, blue: 0.706, alpha: 1), slope: -0.5))
+        self.view .addSubview(makeLabelTitle("ク", frame: CGRectMake(self.view.bounds.size.width / 2 + 75, self.view.bounds.size.height / 2 - 100, 30, 30), fontSize: 36.0, fontColor: UIColor.greenColor(), slope: 0.2))
+        self.view .addSubview(makeLabelTitle("ン", frame: CGRectMake(self.view.bounds.size.width / 2 + 100, self.view.bounds.size.height / 2 - 75, 30, 30), fontSize: 36.0, fontColor: UIColor.purpleColor(), slope: 0.2))
+        self.view .addSubview(makeLabelTitle("かも", frame: CGRectMake(self.view.bounds.size.width / 2 + 65, self.view.bounds.size.height / 2 - 50, 20, 10), fontSize: 8.0, fontColor: UIColor.redColor(), slope: 0))
         
         //結果表示用のラベル土台VIEW配置
         resultView.frame = CGRectMake(self.view.bounds.size.width / 2 - 160, self.view.bounds.size.height / 2 - 20, 323, 48)
@@ -144,7 +145,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         resultView.backgroundColor = UIColor(red: 0.40, green: 0.80, blue: 0.67, alpha: 1)
         self.view.addSubview(resultView)
         
-        //結果表示用のラベル配置（枠）
+        //結果表示用のラベル（枠）
         labelFirstWaku = makeLabel(resultView.bounds.origin.x + 2.5, shitenY:resultView.bounds.origin.y + 5)
         labelSecondWaku = makeLabel(resultView.bounds.origin.x + 47.5, shitenY:resultView.bounds.origin.y + 5)
         labelThirdWaku = makeLabel(resultView.bounds.origin.x + 92.5, shitenY:resultView.bounds.origin.y + 5)
@@ -153,8 +154,13 @@ class MainViewController: UIViewController, SetViewDelegate {
         labelSixethWaku = makeLabel(resultView.bounds.origin.x + 227.5, shitenY:resultView.bounds.origin.y + 5)
         labelSeventhWaku = makeLabel(resultView.bounds.origin.x + 272.5, shitenY:resultView.bounds.origin.y + 5)
         
+        //結果表示ラベル(枠)をArrayにまとめとく
+        labelArrayWaku = [labelFirstWaku, labelSecondWaku, labelThirdWaku, labelFourthWaku, labelFifthWaku, labelSixethWaku, labelSeventhWaku]
+        for waku in labelArrayWaku {
+            resultView.addSubview(waku)
+        }
         
-        //結果表示用のラベル配置（そのもの）
+        //結果表示用のラベル（そのもの）
         labelFirst = makeLabel(resultView.bounds.origin.x + 3.5, shitenY:resultView.bounds.origin.y + 7)
         labelSecond = makeLabel(resultView.bounds.origin.x + 48.5, shitenY:resultView.bounds.origin.y + 7)
         labelThird = makeLabel(resultView.bounds.origin.x + 93.5, shitenY:resultView.bounds.origin.y + 7)
@@ -165,6 +171,42 @@ class MainViewController: UIViewController, SetViewDelegate {
         
         //結果表示ラベルをArrayにまとめとく
         labelArray = [labelFirst, labelSecond, labelThird, labelFourth, labelFifth, labelSixeth, labelSeventh]
+        for lbl in labelArray {
+            resultView.addSubview(lbl)
+        }
+        
+        //ランダム数値生成ボタン配置(５個）
+        let num3ButtonTuple = makeButton(LOTOPART.NUM3.rawValue, shiten:self.view.bounds.size.width / 2 - 200, originHeight: self.view.bounds.size.height, image: "numbers3.jpg")
+        let num4ButtonTuple = makeButton(LOTOPART.NUM4.rawValue, shiten:self.view.bounds.size.width / 2 - 117.5, originHeight: self.view.bounds.size.height, image: "numbers4.jpg")
+        let miniButtonTuple = makeButton(LOTOPART.MINI.rawValue, shiten:self.view.bounds.size.width / 2 - 35, originHeight: self.view.bounds.size.height, image: "miniloto.jpg")
+        let loto6ButtonTuple = makeButton(LOTOPART.LOTO6.rawValue, shiten:self.view.bounds.size.width / 2 + 47.5, originHeight: self.view.bounds.size.height, image: "loto6.jpg")
+        let loto7ButtonTuple = makeButton(LOTOPART.LOTO7.rawValue, shiten:self.view.bounds.size.width / 2 + 130, originHeight: self.view.bounds.size.height, image: "loto7.jpg")
+        
+        //ボタンの配置とaddTarget指定
+        let buttonArrayTuple = [num3ButtonTuple, num4ButtonTuple, miniButtonTuple, loto6ButtonTuple, loto7ButtonTuple]
+        var buttonArray = [num3Button, num4Button, miniButton, loto6Button, loto7Button]
+        
+        for var i = 0; i < buttonArray.count; i++ {
+            //まずボタンを取り出して格納してaddTarget設定して配置
+            buttonArray[i] = buttonArrayTuple[i].0
+            buttonArray[i].addTarget(self, action: "push:", forControlEvents: .TouchUpInside)
+            self.view.addSubview(buttonArray[i])
+            
+            //黒丸配置
+            self.view.addSubview(buttonArrayTuple[i].1)
+        }
+        
+        //SNS連携ボタン配置
+        twitterButton = makeButtonSNS(SNSPART.TWITTER.rawValue, frame: CGRectMake(self.view.bounds.size.width - 55, 90, 30, 30), image: "twitter.png")
+        facebookButton = makeButtonSNS(SNSPART.FACEBOOK.rawValue, frame: CGRectMake(self.view.bounds.size.width - 55, 130, 30, 30), image: "facebook.png")
+        lineButton = makeButtonSNS(SNSPART.LINE.rawValue, frame: CGRectMake(self.view.bounds.size.width - 55, 170, 30, 30), image: "line.png")
+        
+        //ボタンの配置とaddTarget指定
+        let buttonArraySNS = [twitterButton, facebookButton, lineButton]
+        for sns in buttonArraySNS {
+            sns.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
+            self.view.addSubview(sns)
+        }
         
         //設定画面遷移用ボタン配置
         setButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 65, 30, 50, 50))
@@ -172,112 +214,9 @@ class MainViewController: UIViewController, SetViewDelegate {
         setButton.addTarget(self, action: "transSetMode", forControlEvents: .TouchUpInside)
         setButton.enabled = true
         self.view.addSubview(setButton)
-        
-        //twitter連携ボタン配置
-        twitterButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 55, 90, 30, 30))
-        twitterButton.setBackgroundImage(UIImage(named: "twitter.png"), forState: .Normal)
-        twitterButton.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
-        twitterButton.tag = SNSPART.TWITTER.rawValue
-        twitterButton.enabled = false
-        self.view.addSubview(twitterButton)
-        
-        //facebook連携ボタン配置
-        facebookButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 55, 130, 30, 30))
-        facebookButton.setBackgroundImage(UIImage(named: "facebook.png"), forState: .Normal)
-        facebookButton.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
-        facebookButton.tag = SNSPART.FACEBOOK.rawValue
-        facebookButton.enabled = false
-        self.view.addSubview(facebookButton)
-        
-        //line連携ボタン配置
-        lineButton = UIButton(frame: CGRectMake(self.view.bounds.size.width - 55, 170, 30, 30))
-        lineButton.setBackgroundImage(UIImage(named: "line.png"), forState: .Normal)
-        lineButton.addTarget(self, action: "socialButton:", forControlEvents: .TouchUpInside)
-        lineButton.tag = SNSPART.LINE.rawValue
-        lineButton.enabled = false
-        self.view.addSubview(lineButton)
-        
-        //ランダム数値生成ボタン配置(５個）
-        num3Button = makeButton(LOTOPART.NUM3.rawValue, shiten:self.view.bounds.size.width / 2 - 200, image: "numbers3.jpg")
-        num4Button = makeButton(LOTOPART.NUM4.rawValue, shiten:self.view.bounds.size.width / 2 - 117.5, image: "numbers4.jpg")
-        miniButton = makeButton(LOTOPART.MINI.rawValue, shiten:self.view.bounds.size.width / 2 - 35, image: "miniloto.jpg")
-        loto6Button = makeButton(LOTOPART.LOTO6.rawValue, shiten:self.view.bounds.size.width / 2 + 47.5, image: "loto6.jpg")
-        loto7Button = makeButton(LOTOPART.LOTO7.rawValue, shiten:self.view.bounds.size.width / 2 + 130, image: "loto7.jpg")
     }
     
     //MARK: - 他メソッドセクション
-    
-    //題名ラベル生成メソッド
-    func makeLabelTitle(title: String, frame: CGRect, fontSize: CGFloat, fontColor: UIColor, slope: Double)
-    {
-        //文字装飾オブジェクト生成
-        let attrStr = NSMutableAttributedString(string: title)
-        
-        //フォント設定　※うまく指定したフォントが取れてこなかったらクラッシュする(強制アンラップしてるしね！)
-        attrStr.addAttribute(NSFontAttributeName, value: UIFont(name: "HiraKakuProN-W6", size: fontSize)! , range: NSMakeRange(0, attrStr.length))
-        
-        //背景色設定
-        attrStr.addAttribute(NSBackgroundColorAttributeName, value: UIColor.clearColor(), range: NSMakeRange(0, attrStr.length))
-        
-        //影設定
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor.whiteColor() //白
-        shadow.shadowBlurRadius = 0.1             //拡散具合
-        shadow.shadowOffset = CGSizeMake(4, 4)    //x方向とy方向のずれ具合
-        attrStr.addAttribute(NSShadowAttributeName, value: shadow, range: NSMakeRange(0, attrStr.length))
-        
-        //文字色
-        attrStr.addAttribute(NSForegroundColorAttributeName, value: fontColor, range: NSMakeRange(0, attrStr.length))
-        
-        //ラベル生成
-        let label = UILabel()
-        label.frame = frame
-        label.attributedText = attrStr
-        label.sizeToFit()
-        
-        //回転具合
-        label.transform = CGAffineTransformRotate(label.transform, CGFloat(slope * M_1_PI))
-        
-        //viewに配置
-        self.view.addSubview(label)
-    }
-    
-    //結果表示ラベル生成メソッド
-    func makeLabel(shitenX: CGFloat, shitenY: CGFloat) -> UILabel
-    {
-        let label = UILabel(frame: CGRectMake(shitenX, shitenY, 45, 39))
-        label.font = UIFont(name: "7barSPBd", size: 34.0)
-        label.backgroundColor = UIColor.clearColor()
-        resultView.addSubview(label)
-        return label
-    }
-    
-    //ボタン生成メソッド(５個)
-    func makeButton(tag: Int, shiten: CGFloat, image: String) -> UIButton
-    {
-        let button = UIButton()
-        
-        //ロト７ボタンのイメージ画像だけ高さ＋２０ポイント(上下それぞれ＋１０ポイント)
-        if tag == LOTOPART.LOTO7.rawValue {
-            button.frame = CGRectMake(shiten, self.view.bounds.size.height - 95, 70, 50)
-        } else {
-            button.frame = CGRectMake(shiten, self.view.bounds.size.height - 85, 70, 30)
-        }
-        
-        button.setBackgroundImage(UIImage(named: image), forState: .Normal)
-        button.addTarget(self, action: "push:", forControlEvents: .TouchUpInside)
-        button.tag = tag
-        self.view.addSubview(button)
-        
-        //ついでに黒丸も配置
-        let blackCircle = UILabel(frame: CGRectMake(shiten + 20, self.view.bounds.size.height - 120, 25, 25))
-        blackCircle.text = "・"
-        blackCircle.font = UIFont.systemFontOfSize(35)
-        blackCircle.textColor = UIColor.blackColor()
-        self.view.addSubview(blackCircle)
-        
-        return button
-    }
     
     //初回ボタン押下直後に枠線を描画
     func drawLabelFrame()
@@ -293,7 +232,7 @@ class MainViewController: UIViewController, SetViewDelegate {
             resultView.addSubview(iv)
         }
     }
-    
+
     //くじボタン押下時の挙動
     func push(button: UIButton)
     {
