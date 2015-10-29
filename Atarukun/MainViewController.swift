@@ -67,6 +67,9 @@ class MainViewController: UIViewController, SetViewDelegate {
     //設定画面遷移用ボタン
     var setButton = UIButton()
     
+    //保存画面遷移用ボタン
+    var stockButton = UIButton()
+    
     //設定情報格納Array
     var setArray: [Int] = []
     
@@ -118,8 +121,14 @@ class MainViewController: UIViewController, SetViewDelegate {
     //設定画面インスタンス
     var svc: SetViewController?
     
+    //保存画面インスタンス
+    var stc: StockViewController?
+    
     //NEND　
     var nadView: NADView?
+    
+    //結果保存用二次元Array
+    var stockArray: [[String]] = []
     
     //MARK: - viewDidLoadセクション
     override func viewDidLoad() {
@@ -214,6 +223,19 @@ class MainViewController: UIViewController, SetViewDelegate {
         setButton.addTarget(self, action: "transSetMode", forControlEvents: .TouchUpInside)
         setButton.enabled = true
         self.view.addSubview(setButton)
+        
+        //保存画面遷移用ボタン配置
+        stockButton = UIButton(frame: CGRectMake(15, 35, 45, 45))
+        stockButton.setBackgroundImage(UIImage(named: "stock.png"), forState: .Normal)
+        stockButton.addTarget(self, action: "transStockMode", forControlEvents: .TouchUpInside)
+        stockButton.enabled = true
+        self.view.addSubview(stockButton)
+        
+        //結果保存用二次元Arrayに５個のStringArrayを生成
+        for var i = 0; i < 5; i++ {
+            let stringArray: [String] = []
+            stockArray.append(stringArray)
+        }
     }
     
     //MARK: - 他メソッドセクション
@@ -250,6 +272,7 @@ class MainViewController: UIViewController, SetViewDelegate {
 
                 animeSwitch = true
                 setButton.enabled = false
+                stockButton.enabled = false
                 twitterButton.enabled = false
                 facebookButton.enabled = false
                 lineButton.enabled = false
@@ -270,6 +293,7 @@ class MainViewController: UIViewController, SetViewDelegate {
             case 2: //ボタンカウント2の時はラベルの点滅終了　※選択不可状態の設定ボタンを活性化　NENDは表示
                 nadView?.hidden = false
                 setButton.enabled = true
+                stockButton.enabled = true
                 twitterButton.enabled = true
                 facebookButton.enabled = true
                 lineButton.enabled = true
@@ -473,6 +497,9 @@ class MainViewController: UIViewController, SetViewDelegate {
         startArray.removeAll()
         tempStartArray.removeAll()
         endArray.removeAll()
+        
+        //stockArrayに結果情報を格納しよか
+        stockArray[buttonKind - 101].append(makeString())
         
         //ボタンカウントを初期化
         buttonCount = 0
@@ -741,6 +768,20 @@ class MainViewController: UIViewController, SetViewDelegate {
         }
     }
     
+    //保存画面への遷移
+    func transStockMode()
+    {
+        //stcインスタンス生成
+        stc = StockViewController()
+        
+        //遷移
+        if let tempStc = stc {
+            tempStc.stringArray = stockArray
+            tempStc.kujiKind = buttonKind - 101
+            self.presentViewController(tempStc, animated: true, completion: nil)
+        }
+    }
+    
     
     //設定画面から値を受け取る
     func finishSetting(returnValue: [[Int]])
@@ -836,13 +877,9 @@ class MainViewController: UIViewController, SetViewDelegate {
         }
     }
     
-    //SNS用の文字列生成メソッド
-    func makeSnsPostStr() -> String
+    //結果文字列生成（SNS、Stock共用）
+    func makeString() -> String
     {
-        //くじの種類文字列生成
-        let kujiKindStr: [String] = ["ナンバーズ３", "ナンバーズ４", "ミニロト", "ロト６", "ロト７"]
-        let kujiKind = "次回\(kujiKindStr[buttonKind - 101])の予想はこれで決まり！！\n"
-        
         //数列文字列生成
         var kujiNum = ""
         for label in labelArray {
@@ -856,8 +893,21 @@ class MainViewController: UIViewController, SetViewDelegate {
         //前後の不要な空白をトリム
         kujiNum = kujiNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
+        return kujiNum
+    }
+    
+    //SNS用の文字列生成メソッド
+    func makeSnsPostStr() -> String
+    {
+        //くじの種類文字列生成
+        let kujiKindStr: [String] = ["ナンバーズ３", "ナンバーズ４", "ミニロト", "ロト６", "ロト７"]
+        let kujiKind = "次回\(kujiKindStr[buttonKind - 101])の予想はこれで決まり！！\n"
+        
+        //数列文字列生成
+        let kujiNumber = makeString()
+        
         //最終的に表示する文字列に整形して返す
-        return "\(kujiKind)「\(kujiNum)」（買うとは言ってない）\n#当たる鴨君"
+        return "\(kujiKind)「\(kujiNumber)」（買うとは言ってない）\n#当たる鴨君"
     }
     
     //画面キャプチャクラスメソッド

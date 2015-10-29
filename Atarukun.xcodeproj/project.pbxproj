@@ -21,6 +21,8 @@
 		FE0103611949A7C400623A11 /* 7barSPBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE0103601949A7C400623A11 /* 7barSPBd.otf */; };
 		FE0EB2851BE1B67100C022C0 /* libNendAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0EB2831BE1B67100C022C0 /* libNendAd.a */; };
 		FE0EB28B1BE1E23E00C022C0 /* ViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EB28A1BE1E23E00C022C0 /* ViewGenerator.swift */; };
+		FE0EB28D1BE1EFC200C022C0 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */; };
+		FE0EB2951BE2357B00C022C0 /* stock.png in Resources */ = {isa = PBXBuildFile; fileRef = FE0EB2941BE2357B00C022C0 /* stock.png */; };
 		FE1B99041BD8FF74000457FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99031BD8FF74000457FF /* AppDelegate.swift */; };
 		FE1B99061BD900F3000457FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99051BD900F3000457FF /* MainViewController.swift */; };
 		FE1BEFB51AB6F12F00487E53 /* kabuana.png in Resources */ = {isa = PBXBuildFile; fileRef = FE1BEFB41AB6F12F00487E53 /* kabuana.png */; };
@@ -73,6 +75,8 @@
 		FE0EB2841BE1B67100C022C0 /* NADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADView.h; sourceTree = "<group>"; };
 		FE0EB2891BE1B99B00C022C0 /* Atarukun-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Atarukun-Bridging-Header.h"; sourceTree = "<group>"; };
 		FE0EB28A1BE1E23E00C022C0 /* ViewGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGenerator.swift; sourceTree = "<group>"; };
+		FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
+		FE0EB2941BE2357B00C022C0 /* stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock.png; sourceTree = "<group>"; };
 		FE1B99031BD8FF74000457FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE1B99051BD900F3000457FF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FE1BEFB41AB6F12F00487E53 /* kabuana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kabuana.png; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				FE1B99031BD8FF74000457FF /* AppDelegate.swift */,
 				FE1B99051BD900F3000457FF /* MainViewController.swift */,
 				FEB13A241BDB5CE20045DA27 /* SetViewController.swift */,
+				FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */,
 				FE0EB28A1BE1E23E00C022C0 /* ViewGenerator.swift */,
 				0BBE0C241946BF9100BAA038 /* Images.xcassets */,
 				0BBE0C131946BF9100BAA038 /* Supporting Files */,
@@ -203,6 +208,7 @@
 		FE44AAD01956B89C0006F441 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FE0EB2941BE2357B00C022C0 /* stock.png */,
 				FE5D0AA91BDFB44400E71E55 /* facebook.png */,
 				FE5D0AAA1BDFB44400E71E55 /* line.png */,
 				FE5D0AAB1BDFB44400E71E55 /* twitter.png */,
@@ -289,6 +295,7 @@
 				FEE65F3D1AB9A06B00BA3ECF /* icon-60@3x.png in Resources */,
 				FE1BEFB51AB6F12F00487E53 /* kabuana.png in Resources */,
 				FE5D0AAD1BDFB44400E71E55 /* line.png in Resources */,
+				FE0EB2951BE2357B00C022C0 /* stock.png in Resources */,
 				FE5D0AAC1BDFB44400E71E55 /* facebook.png in Resources */,
 				FEE65F411AB9A2F700BA3ECF /* icon-29.png in Resources */,
 				FE0103561949707600623A11 /* loto7.jpg in Resources */,
@@ -321,6 +328,7 @@
 				FEB13A251BDB5CE20045DA27 /* SetViewController.swift in Sources */,
 				FE1B99041BD8FF74000457FF /* AppDelegate.swift in Sources */,
 				FE1B99061BD900F3000457FF /* MainViewController.swift in Sources */,
+				FE0EB28D1BE1EFC200C022C0 /* StockViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

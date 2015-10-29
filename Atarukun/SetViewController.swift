@@ -53,8 +53,8 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //背景は白
-        self.view.backgroundColor = UIColor.whiteColor()
+        //背景は薄ピンク
+        self.view.backgroundColor = UIColor(red: 255.0/255.0, green: 204.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         
         //メイン画面遷移用ボタン（戻る）
         backButton.frame = CGRectMake(self.view.bounds.size.width - 55, 40, 40, 30)
