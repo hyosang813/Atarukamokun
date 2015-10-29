@@ -117,6 +117,9 @@ class MainViewController: UIViewController, SetViewDelegate {
     //設定画面インスタンス
     var svc: SetViewController?
     
+    //NEND
+//    var nadView = NADView()
+    var nadView: NADView?
     
     //MARK: - viewDidLoadセクション
     override func viewDidLoad() {
@@ -301,7 +304,12 @@ class MainViewController: UIViewController, SetViewDelegate {
         }
         
         switch buttonCount {
-            case 0: //ボタンカウント0の時は表示窓枠を描画し左右&高速アニメーション　※設定ボタンは選択不可能状態に非活性化
+            case 0: //ボタンカウント0の時は表示窓枠を描画し左右&高速アニメーション　※設定ボタンは選択不可能状態に非活性化 NENDはインスタンス破棄して非表示
+                if let nend = nadView {
+                    nend.hidden = true
+                    nadView = nil
+                }
+
                 animeSwitch = true
                 setButton.enabled = false
                 twitterButton.enabled = false
@@ -310,10 +318,19 @@ class MainViewController: UIViewController, SetViewDelegate {
                 drawLabelFrame()
                 firstPress(button.tag)
             
-            case 1: //ボタンカウント1の時はラベルを点滅表示
+            case 1: //ボタンカウント1の時はラベルを点滅表示　NENDは生成して非表示
+                nadView = NADView()
+                nadView?.frame = CGRectMake(self.view.bounds.size.width / 2 - 160, self.view.bounds.size.height - 50, 320, 50)
+//                nadView?.setNendID("4a6b97adf264dab1ebd0dcb7064cfb40037dd0e6", spotID: "337445") //本番用
+                nadView?.setNendID("a6eca9dd074372c898dd1df549301f277c53f2b9", spotID: "3172") //テスト用
+                self.view.addSubview(nadView!)
+                nadView?.load()
+                nadView?.hidden = true
+                
                 blinkAnime()
             
-            case 2: //ボタンカウント2の時はラベルの点滅終了　※選択不可状態の設定ボタンを活性化
+            case 2: //ボタンカウント2の時はラベルの点滅終了　※選択不可状態の設定ボタンを活性化　NENDは表示
+                nadView?.hidden = false
                 setButton.enabled = true
                 twitterButton.enabled = true
                 facebookButton.enabled = true

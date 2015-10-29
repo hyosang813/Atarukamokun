@@ -19,6 +19,7 @@
 		FE0103581949707600623A11 /* numbers3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE0103531949707600623A11 /* numbers3.jpg */; };
 		FE0103591949707600623A11 /* numbers4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE0103541949707600623A11 /* numbers4.jpg */; };
 		FE0103611949A7C400623A11 /* 7barSPBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = FE0103601949A7C400623A11 /* 7barSPBd.otf */; };
+		FE0EB2851BE1B67100C022C0 /* libNendAd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0EB2831BE1B67100C022C0 /* libNendAd.a */; };
 		FE1B99041BD8FF74000457FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99031BD8FF74000457FF /* AppDelegate.swift */; };
 		FE1B99061BD900F3000457FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99051BD900F3000457FF /* MainViewController.swift */; };
 		FE1BEFB51AB6F12F00487E53 /* kabuana.png in Resources */ = {isa = PBXBuildFile; fileRef = FE1BEFB41AB6F12F00487E53 /* kabuana.png */; };
@@ -67,7 +68,9 @@
 		FE0103531949707600623A11 /* numbers3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = numbers3.jpg; sourceTree = "<group>"; };
 		FE0103541949707600623A11 /* numbers4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = numbers4.jpg; sourceTree = "<group>"; };
 		FE0103601949A7C400623A11 /* 7barSPBd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = 7barSPBd.otf; sourceTree = "<group>"; };
-		FE1B99021BD8FF73000457FF /* Atarukun-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Atarukun-Bridging-Header.h"; sourceTree = "<group>"; };
+		FE0EB2831BE1B67100C022C0 /* libNendAd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libNendAd.a; sourceTree = "<group>"; };
+		FE0EB2841BE1B67100C022C0 /* NADView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADView.h; sourceTree = "<group>"; };
+		FE0EB2891BE1B99B00C022C0 /* Atarukun-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Atarukun-Bridging-Header.h"; sourceTree = "<group>"; };
 		FE1B99031BD8FF74000457FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE1B99051BD900F3000457FF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FE1BEFB41AB6F12F00487E53 /* kabuana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kabuana.png; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 				FEF311A0196D618F00BD8A9A /* Social.framework in Frameworks */,
 				FE44AAED1956BE330006F441 /* CoreTelephony.framework in Frameworks */,
 				FE44AAEB1956BA3D0006F441 /* SystemConfiguration.framework in Frameworks */,
+				FE0EB2851BE1B67100C022C0 /* libNendAd.a in Frameworks */,
 				FE44AAE91956BA2D0006F441 /* StoreKit.framework in Frameworks */,
 				FE44AAE71956BA160006F441 /* MessageUI.framework in Frameworks */,
 				FE44AAE51956BA040006F441 /* AVFoundation.framework in Frameworks */,
@@ -170,7 +174,6 @@
 		0BBE0C121946BF9100BAA038 /* Atarukun */ = {
 			isa = PBXGroup;
 			children = (
-				FE1B99021BD8FF73000457FF /* Atarukun-Bridging-Header.h */,
 				FE1B99031BD8FF74000457FF /* AppDelegate.swift */,
 				FE1B99051BD900F3000457FF /* MainViewController.swift */,
 				FEB13A241BDB5CE20045DA27 /* SetViewController.swift */,
@@ -184,6 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				FE44AAD01956B89C0006F441 /* images */,
+				FE0EB2831BE1B67100C022C0 /* libNendAd.a */,
+				FE0EB2841BE1B67100C022C0 /* NADView.h */,
+				FE0EB2891BE1B99B00C022C0 /* Atarukun-Bridging-Header.h */,
 				0BBE0C141946BF9100BAA038 /* Atarukun-Info.plist */,
 				0BBE0C151946BF9100BAA038 /* InfoPlist.strings */,
 				0BBE0C1A1946BF9100BAA038 /* Atarukun-Prefix.pch */,
@@ -365,6 +371,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "当たる鴨君";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Ararukun-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -397,6 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				PRODUCT_NAME = "当たる鴨君";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Ararukun-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

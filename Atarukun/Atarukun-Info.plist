@@ -38,5 +38,10 @@
 	<array>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>line</string>
+	</array>
+
 </dict>
 </plist>
