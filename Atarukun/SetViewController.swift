@@ -181,13 +181,13 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             returnDrums = 4
             
         case LOTOPART.MINI.rawValue:
-            returnDrums = 5
+            returnDrums = 4
             
         case LOTOPART.LOTO6.rawValue:
-            returnDrums = 6
+            returnDrums = 5
             
         case LOTOPART.LOTO7.rawValue:
-            returnDrums = 7
+            returnDrums = 6
             
         default: break
         }
@@ -236,7 +236,7 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func swithPickKind(seg: UISegmentedControl)
     {
         //全選択なら舐めた口調で返そう
-        if savePickValue() {
+        if savePickValue() && (choiceSeg == LOTOPART.NUM3.rawValue || choiceSeg == LOTOPART.NUM4.rawValue) {
             displayAlertMessage("数字全部決まってるのならその数字そのまま買えば？")
             //セグメントを元に戻して以降スキップ
             seg.selectedSegmentIndex = choiceSeg - 101
@@ -263,7 +263,7 @@ class SetViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func back(button: UIButton)
     {
         //最終的に表示されてるpickerViewの値を配列に格納するけどオールANY以外ならアラート表示してスキップ
-        if savePickValue() {
+        if savePickValue() && (choiceSeg == LOTOPART.NUM3.rawValue || choiceSeg == LOTOPART.NUM4.rawValue){
             displayAlertMessage("数字全部決まってるのならその数字そのまま買えば？")
             return
         }

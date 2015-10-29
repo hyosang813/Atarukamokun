@@ -117,8 +117,7 @@ class MainViewController: UIViewController, SetViewDelegate {
     //設定画面インスタンス
     var svc: SetViewController?
     
-    //NEND
-//    var nadView = NADView()
+    //NEND　
     var nadView: NADView?
     
     //MARK: - viewDidLoadセクション
