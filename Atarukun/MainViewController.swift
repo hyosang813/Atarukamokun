@@ -130,6 +130,9 @@ class MainViewController: UIViewController, SetViewDelegate {
     //結果保存用二次元Array
     var stockArray: [[String]] = []
     
+    //高速回転開始後にボタン操作可能にするためのカウント
+    var revolCount = 0
+    
     //MARK: - viewDidLoadセクション
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -288,6 +291,10 @@ class MainViewController: UIViewController, SetViewDelegate {
                 nadView?.load()
                 nadView?.hidden = true
                 
+                //revolCountの初期化
+                revolCount = 0
+                
+                //点滅表示
                 blinkAnime()
             
             case 2: //ボタンカウント2の時はラベルの点滅終了　※選択不可状態の設定ボタンを活性化　NENDは表示
@@ -604,9 +611,6 @@ class MainViewController: UIViewController, SetViewDelegate {
             tm = nil
         }
         
-        //0.5秒待ってから高速回転用タイマースタート
-        NSThread.sleepForTimeInterval(0.5)
-        
         //ナンバーズは表示AlignmentをLeftに
         if buttonKind == LOTOPART.NUM3.rawValue || buttonKind == LOTOPART.NUM4.rawValue {
             labelFirst.textAlignment = NSTextAlignment.Left
@@ -617,12 +621,10 @@ class MainViewController: UIViewController, SetViewDelegate {
             labelSixeth.textAlignment = NSTextAlignment.Left
             labelSeventh.textAlignment = NSTextAlignment.Left
         }
-        
+
+        //0.5秒待ってから高速回転用タイマースタート
+        NSThread.sleepForTimeInterval(0.5)
         highTm = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "labelTextHighRevol", userInfo: nil, repeats: true)
-        
-        //左右アニメーション終了後はボタン操作を有効にするのでスイッチをoff：NO　にしてボタンカウントを１にアップ
-        animeSwitch = false
-        buttonCount = 1
     }
     
     //ラベルのテキスト高速回転させる
@@ -661,6 +663,15 @@ class MainViewController: UIViewController, SetViewDelegate {
                     displayLabel([0, 1, 2, 3, 4, 5, 6])
                 }
             }
+        
+        if revolCount == 2 {
+            //左右アニメーション終了後はボタン操作を有効にするのでスイッチをoff：NO　にしてボタンカウントを１にアップ
+            animeSwitch = false
+            buttonCount = 1
+        }
+        
+        //カウントアップ
+        revolCount++
     }
     
     //左右アニメーション用ラベル表示メソッド
