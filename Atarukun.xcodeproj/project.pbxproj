@@ -23,6 +23,7 @@
 		FE0EB28B1BE1E23E00C022C0 /* ViewGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EB28A1BE1E23E00C022C0 /* ViewGenerator.swift */; };
 		FE0EB28D1BE1EFC200C022C0 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */; };
 		FE0EB2951BE2357B00C022C0 /* stock.png in Resources */ = {isa = PBXBuildFile; fileRef = FE0EB2941BE2357B00C022C0 /* stock.png */; };
+		FE0EB2991BE4579300C022C0 /* Icon-Small-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE0EB2981BE4579300C022C0 /* Icon-Small-40@3x.png */; };
 		FE1B99041BD8FF74000457FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99031BD8FF74000457FF /* AppDelegate.swift */; };
 		FE1B99061BD900F3000457FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99051BD900F3000457FF /* MainViewController.swift */; };
 		FE1BEFB51AB6F12F00487E53 /* kabuana.png in Resources */ = {isa = PBXBuildFile; fileRef = FE1BEFB41AB6F12F00487E53 /* kabuana.png */; };
@@ -77,6 +78,7 @@
 		FE0EB28A1BE1E23E00C022C0 /* ViewGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewGenerator.swift; sourceTree = "<group>"; };
 		FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		FE0EB2941BE2357B00C022C0 /* stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock.png; sourceTree = "<group>"; };
+		FE0EB2981BE4579300C022C0 /* Icon-Small-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@3x.png"; sourceTree = "<group>"; };
 		FE1B99031BD8FF74000457FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE1B99051BD900F3000457FF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FE1BEFB41AB6F12F00487E53 /* kabuana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kabuana.png; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		0BBE0C131946BF9100BAA038 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FE0103601949A7C400623A11 /* 7barSPBd.otf */,
 				FE44AAD01956B89C0006F441 /* images */,
 				FE0EB2831BE1B67100C022C0 /* libNendAd.a */,
 				FE0EB2841BE1B67100C022C0 /* NADView.h */,
@@ -215,6 +218,7 @@
 				FE7B964C195867D7001C6BF3 /* Default@2x.png */,
 				FE7B964D195867D7001C6BF3 /* Default@R4.png */,
 				FE7B9631195848ED001C6BF3 /* Icon-Small-40@2x.png */,
+				FE0EB2981BE4579300C022C0 /* Icon-Small-40@3x.png */,
 				FE7B962919584830001C6BF3 /* Icon-Small@2x.png */,
 				FEE65F3C1AB9A06B00BA3ECF /* icon-60@3x.png */,
 				FE7B962719584830001C6BF3 /* Icon-60@2x.png */,
@@ -223,7 +227,6 @@
 				FEE65F401AB9A2F700BA3ECF /* icon-29@3x.png */,
 				FE1BEFB41AB6F12F00487E53 /* kabuana.png */,
 				0B82275F1957EF1F00C8F7DA /* haguruma.png */,
-				FE0103601949A7C400623A11 /* 7barSPBd.otf */,
 				FE0103501949707600623A11 /* loto6.jpg */,
 				FE0103511949707600623A11 /* loto7.jpg */,
 				FE0103521949707600623A11 /* miniloto.jpg */,
@@ -301,6 +304,7 @@
 				FE0103561949707600623A11 /* loto7.jpg in Resources */,
 				FE0103581949707600623A11 /* numbers3.jpg in Resources */,
 				FE5D0AAE1BDFB44400E71E55 /* twitter.png in Resources */,
+				FE0EB2991BE4579300C022C0 /* Icon-Small-40@3x.png in Resources */,
 				FE0103591949707600623A11 /* numbers4.jpg in Resources */,
 				FE7B964F195867D7001C6BF3 /* Default@R4.png in Resources */,
 				FEE65F431AB9A2F700BA3ECF /* icon-29@3x.png in Resources */,
