@@ -285,8 +285,8 @@ class MainViewController: UIViewController, SetViewDelegate {
             case 1: //ボタンカウント1の時はラベルを点滅表示　NENDは生成して非表示
                 nadView = NADView()
                 nadView?.frame = CGRectMake(self.view.bounds.size.width / 2 - 160, self.view.bounds.size.height - 50, 320, 50)
-//                nadView?.setNendID("4a6b97adf264dab1ebd0dcb7064cfb40037dd0e6", spotID: "337445") //本番用
-                nadView?.setNendID("a6eca9dd074372c898dd1df549301f277c53f2b9", spotID: "3172") //テスト用
+                nadView?.setNendID("4a6b97adf264dab1ebd0dcb7064cfb40037dd0e6", spotID: "337445") //本番用
+//                nadView?.setNendID("a6eca9dd074372c898dd1df549301f277c53f2b9", spotID: "3172") //テスト用
                 self.view.addSubview(nadView!)
                 nadView?.load()
                 nadView?.hidden = true

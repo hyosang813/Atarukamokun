@@ -196,8 +196,8 @@
 		0BBE0C131946BF9100BAA038 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FE0103601949A7C400623A11 /* 7barSPBd.otf */,
 				FE44AAD01956B89C0006F441 /* images */,
+				FE0103601949A7C400623A11 /* 7barSPBd.otf */,
 				FE0EB2831BE1B67100C022C0 /* libNendAd.a */,
 				FE0EB2841BE1B67100C022C0 /* NADView.h */,
 				FE0EB2891BE1B99B00C022C0 /* Atarukun-Bridging-Header.h */,
@@ -441,8 +441,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Atarukun",
-					"$(PROJECT_DIR)/Atarukun/NendAd",
-					"$(PROJECT_DIR)/Atarukun/GoogleAnalytics",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raksam.LotoNumbers;
@@ -470,8 +468,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Atarukun",
-					"$(PROJECT_DIR)/Atarukun/NendAd",
-					"$(PROJECT_DIR)/Atarukun/GoogleAnalytics",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raksam.LotoNumbers;
