@@ -24,6 +24,11 @@
 		FE0EB28D1BE1EFC200C022C0 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */; };
 		FE0EB2951BE2357B00C022C0 /* stock.png in Resources */ = {isa = PBXBuildFile; fileRef = FE0EB2941BE2357B00C022C0 /* stock.png */; };
 		FE0EB2991BE4579300C022C0 /* Icon-Small-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FE0EB2981BE4579300C022C0 /* Icon-Small-40@3x.png */; };
+		FE11F7EB1DBBAD6300048557 /* LogPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE11F7E91DBBAD6300048557 /* LogPush.framework */; };
+		FE11F7EC1DBBAD6300048557 /* LogPushAppEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE11F7EA1DBBAD6300048557 /* LogPushAppEx.framework */; };
+		FE11F7F51DBBADC100048557 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = FE11F7F41DBBADC100048557 /* NotificationService.m */; };
+		FE11F7F91DBBADC100048557 /* LogPushExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FE11F7F11DBBADC100048557 /* LogPushExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FE11F7FE1DBBADDC00048557 /* LogPushAppEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE11F7EA1DBBAD6300048557 /* LogPushAppEx.framework */; };
 		FE1B99041BD8FF74000457FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99031BD8FF74000457FF /* AppDelegate.swift */; };
 		FE1B99061BD900F3000457FF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1B99051BD900F3000457FF /* MainViewController.swift */; };
 		FE1BEFB51AB6F12F00487E53 /* kabuana.png in Resources */ = {isa = PBXBuildFile; fileRef = FE1BEFB41AB6F12F00487E53 /* kabuana.png */; };
@@ -55,6 +60,30 @@
 		FEF311A0196D618F00BD8A9A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF3119F196D618F00BD8A9A /* Social.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FE11F7F71DBBADC100048557 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0BBE0C011946BF9100BAA038 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE11F7F01DBBADC100048557;
+			remoteInfo = LogPushExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FE11F7FD1DBBADC100048557 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FE11F7F91DBBADC100048557 /* LogPushExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0B82275F1957EF1F00C8F7DA /* haguruma.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haguruma.png; sourceTree = "<group>"; };
 		0BBE0C091946BF9100BAA038 /* 当たる鴨君.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "当たる鴨君.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +108,13 @@
 		FE0EB28C1BE1EFC200C022C0 /* StockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		FE0EB2941BE2357B00C022C0 /* stock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stock.png; sourceTree = "<group>"; };
 		FE0EB2981BE4579300C022C0 /* Icon-Small-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-40@3x.png"; sourceTree = "<group>"; };
+		FE11F7E81DBBAD1F00048557 /* 当たる鴨君.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "当たる鴨君.entitlements"; sourceTree = "<group>"; };
+		FE11F7E91DBBAD6300048557 /* LogPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LogPush.framework; sourceTree = "<group>"; };
+		FE11F7EA1DBBAD6300048557 /* LogPushAppEx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LogPushAppEx.framework; sourceTree = "<group>"; };
+		FE11F7F11DBBADC100048557 /* LogPushExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LogPushExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE11F7F31DBBADC100048557 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		FE11F7F41DBBADC100048557 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		FE11F7F61DBBADC100048557 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE1B99031BD8FF74000457FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE1B99051BD900F3000457FF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FE1BEFB41AB6F12F00487E53 /* kabuana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kabuana.png; sourceTree = "<group>"; };
@@ -121,6 +157,7 @@
 				FE1BEFC81AB7EA7B00487E53 /* AdSupport.framework in Frameworks */,
 				FE1BEFC71AB7EA7300487E53 /* Security.framework in Frameworks */,
 				FE1BEFC21AB7EA2F00487E53 /* ImageIO.framework in Frameworks */,
+				FE11F7EC1DBBAD6300048557 /* LogPushAppEx.framework in Frameworks */,
 				FEF311A0196D618F00BD8A9A /* Social.framework in Frameworks */,
 				FE44AAED1956BE330006F441 /* CoreTelephony.framework in Frameworks */,
 				FE44AAEB1956BA3D0006F441 /* SystemConfiguration.framework in Frameworks */,
@@ -130,8 +167,17 @@
 				FE44AAE51956BA040006F441 /* AVFoundation.framework in Frameworks */,
 				FE44AAE31956B9F70006F441 /* AudioToolbox.framework in Frameworks */,
 				0BBE0C0F1946BF9100BAA038 /* CoreGraphics.framework in Frameworks */,
+				FE11F7EB1DBBAD6300048557 /* LogPush.framework in Frameworks */,
 				0BBE0C111946BF9100BAA038 /* UIKit.framework in Frameworks */,
 				0BBE0C0D1946BF9100BAA038 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE11F7EE1DBBADC100048557 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE11F7FE1DBBADDC00048557 /* LogPushAppEx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				0BBE0C121946BF9100BAA038 /* Atarukun */,
+				FE11F7F21DBBADC100048557 /* LogPushExtension */,
 				0BBE0C0B1946BF9100BAA038 /* Frameworks */,
 				0BBE0C0A1946BF9100BAA038 /* Products */,
 			);
@@ -151,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0BBE0C091946BF9100BAA038 /* 当たる鴨君.app */,
+				FE11F7F11DBBADC100048557 /* LogPushExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +206,8 @@
 		0BBE0C0B1946BF9100BAA038 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE11F7E91DBBAD6300048557 /* LogPush.framework */,
+				FE11F7EA1DBBAD6300048557 /* LogPushAppEx.framework */,
 				FEE65F3A1AB9945400BA3ECF /* CoreData.framework */,
 				FE1BEFC61AB7EA7300487E53 /* Security.framework */,
 				FE1BEFC11AB7EA2F00487E53 /* ImageIO.framework */,
@@ -182,6 +232,7 @@
 		0BBE0C121946BF9100BAA038 /* Atarukun */ = {
 			isa = PBXGroup;
 			children = (
+				FE11F7E81DBBAD1F00048557 /* 当たる鴨君.entitlements */,
 				FE1B99031BD8FF74000457FF /* AppDelegate.swift */,
 				FE1B99051BD900F3000457FF /* MainViewController.swift */,
 				FEB13A241BDB5CE20045DA27 /* SetViewController.swift */,
@@ -206,6 +257,16 @@
 				0BBE0C1A1946BF9100BAA038 /* Atarukun-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE11F7F21DBBADC100048557 /* LogPushExtension */ = {
+			isa = PBXGroup;
+			children = (
+				FE11F7F31DBBADC100048557 /* NotificationService.h */,
+				FE11F7F41DBBADC100048557 /* NotificationService.m */,
+				FE11F7F61DBBADC100048557 /* Info.plist */,
+			);
+			path = LogPushExtension;
 			sourceTree = "<group>";
 		};
 		FE44AAD01956B89C0006F441 /* images */ = {
@@ -246,15 +307,34 @@
 				0BBE0C051946BF9100BAA038 /* Sources */,
 				0BBE0C061946BF9100BAA038 /* Frameworks */,
 				0BBE0C071946BF9100BAA038 /* Resources */,
+				FE11F7FD1DBBADC100048557 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FE11F7F81DBBADC100048557 /* PBXTargetDependency */,
 			);
 			name = Atarukun;
 			productName = Atarukun;
 			productReference = 0BBE0C091946BF9100BAA038 /* 当たる鴨君.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FE11F7F01DBBADC100048557 /* LogPushExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE11F7FA1DBBADC100048557 /* Build configuration list for PBXNativeTarget "LogPushExtension" */;
+			buildPhases = (
+				FE11F7ED1DBBADC100048557 /* Sources */,
+				FE11F7EE1DBBADC100048557 /* Frameworks */,
+				FE11F7EF1DBBADC100048557 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LogPushExtension;
+			productName = LogPushExtension;
+			productReference = FE11F7F11DBBADC100048557 /* LogPushExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -268,6 +348,16 @@
 				TargetAttributes = {
 					0BBE0C081946BF9100BAA038 = {
 						DevelopmentTeam = GK46E4V5S6;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					FE11F7F01DBBADC100048557 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = GK46E4V5S6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -285,6 +375,7 @@
 			projectRoot = "";
 			targets = (
 				0BBE0C081946BF9100BAA038 /* Atarukun */,
+				FE11F7F01DBBADC100048557 /* LogPushExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -321,6 +412,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE11F7EF1DBBADC100048557 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -336,7 +434,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE11F7ED1DBBADC100048557 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE11F7F51DBBADC100048557 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE11F7F81DBBADC100048557 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE11F7F01DBBADC100048557 /* LogPushExtension */;
+			targetProxy = FE11F7F71DBBADC100048557 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0BBE0C151946BF9100BAA038 /* InfoPlist.strings */ = {
@@ -431,8 +545,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Atarukun/当たる鴨君.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Atarukun/Atarukun-Prefix.pch";
 				INFOPLIST_FILE = "Atarukun/Atarukun-Info.plist";
@@ -443,11 +562,13 @@
 					"$(PROJECT_DIR)/Atarukun",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raksam.LotoNumbers;
 				PRODUCT_NAME = "当たる鴨君";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Atarukun/Atarukun-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -458,8 +579,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Atarukun/当たる鴨君.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Atarukun/Atarukun-Prefix.pch";
 				INFOPLIST_FILE = "Atarukun/Atarukun-Info.plist";
@@ -470,11 +596,72 @@
 					"$(PROJECT_DIR)/Atarukun",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raksam.LotoNumbers;
 				PRODUCT_NAME = "当たる鴨君";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Atarukun/Atarukun-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FE11F7FB1DBBADC100048557 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GK46E4V5S6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LogPushExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raksam.LotoNumbers.LogPushExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FE11F7FC1DBBADC100048557 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = GK46E4V5S6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = LogPushExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.raksam.LotoNumbers.LogPushExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -498,6 +685,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FE11F7FA1DBBADC100048557 /* Build configuration list for PBXNativeTarget "LogPushExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE11F7FB1DBBADC100048557 /* Debug */,
+				FE11F7FC1DBBADC100048557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

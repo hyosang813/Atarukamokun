@@ -937,7 +937,7 @@ class MainViewController: UIViewController, SetViewDelegate {
         let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return capturedImage
+        return capturedImage!
     }
     
     //アラートメッセージ共通メソッド

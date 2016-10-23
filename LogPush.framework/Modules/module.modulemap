@@ -1,0 +1,6 @@
+framework module LogPush {
+  umbrella header "LogPush.h"
+
+  export *
+  module * { export * }
+}
